@@ -26,48 +26,38 @@ public class Main {
             System.out.println("Установите версию приложения для Android по ссылке");
         }
     }
-
+// v2
     public static int card(int deliveryDistance) {
         int deliveryDays = 1;
-        if (deliveryDistance <= 20) {
-            System.out.println("Понадобится дней " + deliveryDays);
-        } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
-            System.out.println("Понадобится дней " + (deliveryDays + 1));
+        if (deliveryDistance > 20 && deliveryDistance <= 60) {
+            deliveryDays++;
         } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
-            System.out.println("Понадобится дней " + (deliveryDays + 2));
+            deliveryDays += 2;
         }
         return deliveryDays;
     }
 
-
-    public static String getSing(String signs) {
-        return String.valueOf(signs.toCharArray());
+    public static void findDuplicates(String duplicates) {
+        char[] letters = duplicates.toCharArray();
+        for (int i = 0; i < letters.length - 1; i++) {
+            if (letters[i] == letters[i + 1]) {
+                System.out.println("Найден дубль по символу " + letters[i]);
+                return;
+            }
+        }
+        System.out.println("Дублей не найдено");
     }
 
-    public static void checkString(char[] signs) {
-        for (int i = 0; i < signs.length; i++) {
-            for (int j = 0; j < signs.length; j++) {
-                if (signs[i] == signs[j]) {
-                } else {
-                    if (signs.equals(signs[i] == signs[j]))
-                        System.out.println("Обнаружен дубль " + signs[j]);
-                    break;
-                }
-            }
+    public static void reverseArray(int[] arr) {
+        int leftIndex = 0;
+        int rightIndex = arr.length - 1;
+        while (leftIndex < rightIndex) {
+            int temp = arr[leftIndex];
+            arr[leftIndex++] = arr[rightIndex];
+            arr[rightIndex--] = temp;
         }
     }
 
-
-    // public static int reverse(int [] in) {
-    //   for (int i = in.length; i >= 0; i++) {
-    //     System.out.println(i);
-    //}
-    public static void reverse(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-             {
-            }
-        }
-    }
 
     public static void main(String[] args) {
         // 1st
@@ -80,16 +70,17 @@ public class Main {
         //3rd
         int deliveryDistance = 61;
         card(deliveryDistance);
-        //4th Почему код не останавливается после первого дубля? Он просто производит печать каждого символа с "Обнаружен дубль"
+        System.out.println("Потребуется дней " +card(deliveryDistance));
+        //4th
         String signs = "abbccddeffgghiijjkk";
-        checkString(signs.toCharArray());
-        //5th Мне подсказали, что нужно сделать счетчик в обе стороны,а что это такое я не понял, не было времени.
-        int[] arr = {3, 2, 1, 6, 5};
-        reverse(arr);
-        System.out.println(Arrays.toString(arr));
+        findDuplicates(signs);
+        //5th
+        int[] arr = new int[]{3, 2, 1, 6, 5};
+        reverseArray(arr);
+        System.out.print("Reverse Array " + Arrays.toString(arr));
+
     }
 }
-
 
 
 
